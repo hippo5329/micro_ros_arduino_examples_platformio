@@ -1,4 +1,4 @@
-#include <micro_ros_arduino.h>
+// #include <micro_ros_arduino.h>
 
 #include "LSM6DSOXSensor.h"
 #include "lsm6dsox_activity_recognition_for_mobile.h"
