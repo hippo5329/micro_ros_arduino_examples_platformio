@@ -1,4 +1,4 @@
-#include <micro_ros_arduino.h>
+// #include <micro_ros_arduino.h>
 
 #include <stdio.h>
 #include <rcl/rcl.h>
@@ -16,7 +16,11 @@ rcl_allocator_t allocator;
 rcl_node_t node;
 rcl_timer_t timer;
 
+#ifdef LED_BUILTIN
+#define LED_PIN LED_BUILTIN
+#else
 #define LED_PIN 13
+#endif
 
 #define RCCHECK(fn) { rcl_ret_t temp_rc = fn; if((temp_rc != RCL_RET_OK)){error_loop();}}
 #define RCSOFTCHECK(fn) { rcl_ret_t temp_rc = fn; if((temp_rc != RCL_RET_OK)){}}
