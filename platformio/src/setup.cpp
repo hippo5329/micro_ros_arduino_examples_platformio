@@ -12,7 +12,7 @@ IPAddress local_ip(LOCAL_IP);
 IPAddress agent_ip(AGENT_IP);
 size_t agent_port = AGENT_PORT;
 char ssid[] = WIFI_SSID;
-char psk[] = WIFI_PSK;
+char psk[] = WIFI_PASSWORD;
 #endif
 
 #if defined(MICRO_ROS_TRANSPORT_ARDUINO_CUSTOM)
