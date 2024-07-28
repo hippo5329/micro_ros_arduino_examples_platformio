@@ -94,7 +94,7 @@ void loop() {
   RCSOFTCHECK(rcl_publish(&publisher, &msg, NULL));
 
   // Wait 100 ms
-  delay(100);
+  // delay(100);
 }
 
 void onPDMdata() {
