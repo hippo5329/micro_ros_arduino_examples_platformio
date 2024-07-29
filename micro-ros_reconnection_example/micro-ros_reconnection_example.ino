@@ -17,6 +17,7 @@
   if (uxr_millis() - init > MS) { X; init = uxr_millis();} \
 } while (0)\
 
+size_t domain_id = (size_t) 0;  // ROS_DOMAIN_ID
 rclc_support_t support;
 rcl_node_t node;
 rcl_timer_t timer;
@@ -51,8 +52,12 @@ bool create_entities()
 {
   allocator = rcl_get_default_allocator();
 
+  rcl_init_options_t init_options = rcl_get_zero_initialized_init_options();
+  RCCHECK(rcl_init_options_init(&init_options, allocator));
+  RCCHECK(rcl_init_options_set_domain_id(&init_options, domain_id));
+
   // create init_options
-  RCCHECK(rclc_support_init(&support, 0, NULL, &allocator));
+  RCCHECK(rclc_support_init_with_options(&support, 0, NULL, &init_options, &allocator));
 
   // create node
   RCCHECK(rclc_node_init_default(&node, "int32_publisher_rclc", "", &support));
