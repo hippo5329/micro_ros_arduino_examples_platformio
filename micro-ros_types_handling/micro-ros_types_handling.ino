@@ -21,7 +21,11 @@ rcl_timer_t timer;
 
 uint8_t my_buffer[1000];
 
+#ifdef LED_BUILTIN
+#define LED_PIN LED_BUILTIN
+#else
 #define LED_PIN 13
+#endif
 
 #define RCCHECK(fn) { rcl_ret_t temp_rc = fn; if((temp_rc != RCL_RET_OK)){error_loop();}}
 #define RCSOFTCHECK(fn) { rcl_ret_t temp_rc = fn; if((temp_rc != RCL_RET_OK)){}}

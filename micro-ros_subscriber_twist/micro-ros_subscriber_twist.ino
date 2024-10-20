@@ -15,8 +15,11 @@ rcl_allocator_t allocator;
 rclc_support_t support;
 rcl_node_t node;
 
-
+#ifdef LED_BUILTIN
+#define LED_PIN LED_BUILTIN
+#else
 #define LED_PIN 13
+#endif
 
 #define RCCHECK(fn) { rcl_ret_t temp_rc = fn; if((temp_rc != RCL_RET_OK)){error_loop();}}
 #define RCSOFTCHECK(fn) { rcl_ret_t temp_rc = fn; if((temp_rc != RCL_RET_OK)){error_loop();}}
