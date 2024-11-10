@@ -24,6 +24,9 @@ size_t platformio_transport_read(struct uxrCustomTransport* transport, uint8_t* 
 
 void set_microros_transports() {
 	Serial.begin(921600);
+#ifdef ESP32
+    Serial.setRxBufferSize(1024);
+#endif
 #if defined(MICRO_ROS_TRANSPORT_ARDUINO_SERIAL)
 	set_microros_serial_transports(Serial);
 #elif defined(MICRO_ROS_TRANSPORT_ARDUINO_NATIVE_ETHERNET)
