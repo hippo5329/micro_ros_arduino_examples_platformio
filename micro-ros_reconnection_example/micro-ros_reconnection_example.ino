@@ -118,7 +118,9 @@ void loop() {
       };
       break;
     case AGENT_CONNECTED:
+#ifndef USE_STAY_CONNECTED // Stay connected. Do not ping.
       EXECUTE_EVERY_N_MS(200, state = (RMW_RET_OK == rmw_uros_ping_agent(100, 1)) ? AGENT_CONNECTED : AGENT_DISCONNECTED;);
+#endif
       if (state == AGENT_CONNECTED) {
         rclc_executor_spin_some(&executor, RCL_MS_TO_NS(100));
       }
